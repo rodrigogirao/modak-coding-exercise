@@ -1,11 +1,17 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {product} from './mockProduct';
 import styles, {CONTAINER_SIZE} from './styles';
+import {useNavigation} from '@react-navigation/native';
 
 export function Product(): React.JSX.Element {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={0.6}
+      style={styles.container}
+      onPress={() => navigation.navigate('ProductDetails')}>
       <Text style={styles.rating}>⭐ {product.rating}</Text>
       <Image
         resizeMode="contain"
@@ -27,6 +33,6 @@ export function Product(): React.JSX.Element {
           </Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
