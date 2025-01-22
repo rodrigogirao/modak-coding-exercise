@@ -1,13 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  flatList: {
+  scrollView: {
     backgroundColor: 'white',
     height: '100%',
     paddingHorizontal: 16,
-  },
-  columnWrapper: {
-    gap: 12,
-    marginVertical: 12,
   },
 });
