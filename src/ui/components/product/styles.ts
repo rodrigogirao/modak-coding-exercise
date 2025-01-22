@@ -7,7 +7,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     borderRadius: 32,
-    backgroundColor: 'gray',
+    backgroundColor: 'lightgrey',
     width: CONTAINER_SIZE,
     height: CONTAINER_SIZE * 1.5,
   },
