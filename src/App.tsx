@@ -4,6 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ProductsListScreen} from './ui/screens/products-list';
 import {ProductDetails} from './ui/screens/product-details';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {FiltersScreen} from './ui/screens/filters';
+import {Button} from 'react-native';
 
 const ONE_MINUTE_STALE_TIME = 60000;
 
@@ -12,6 +14,13 @@ export const RootStack = createNativeStackNavigator({
   screens: {
     ProductsList: ProductsListScreen,
     ProductDetails: ProductDetails,
+    Filters: {
+      screen: FiltersScreen,
+      options: {
+        presentation: 'modal',
+        headerLeft: () => <Button title="Close" />,
+      },
+    },
   },
 });
 

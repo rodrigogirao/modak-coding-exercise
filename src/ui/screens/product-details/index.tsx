@@ -42,6 +42,7 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
         <Text>{product.categorySlug}</Text>
         <Text>{product.brand}</Text>
         <Text>{product.rating}</Text>
+        <Text>{product.stock}</Text>
         <Text>{product.reviews.at(0)?.comment}</Text>
         <Text>{product.reviews.at(1)?.comment}</Text>
         <Text>{product.reviews.at(2)?.comment}</Text>

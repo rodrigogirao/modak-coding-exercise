@@ -6,6 +6,7 @@ export type ProductParamsType = {
   description?: string;
   category?: string;
   brand?: string;
+  stock?: number;
   price?: number;
   discountPercentage?: number;
   rating?: number;
@@ -21,6 +22,7 @@ export type ProductType = {
   description: string;
   categorySlug: string;
   brand: string;
+  stock: number;
   originalPrice: string;
   price: string;
   rating: number;
