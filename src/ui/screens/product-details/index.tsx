@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {
   ActivityIndicator,
+  Button,
   Dimensions,
   Image,
   ScrollView,
+  Share,
   Text,
 } from 'react-native';
 import styles from './styles';
@@ -20,6 +22,14 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
   const {isPending, error, data: product, refetch} = useProductDetails(id);
   const [isImageLoading, setIsImageLoading] = useState(false);
 
+  function onShare() {
+    if (product) {
+      Share.share({
+        message: `${product.title} | modak-coding-exercise://product/${product.id}`,
+      });
+    }
+  }
+
   function renderProductDetail() {
     if (!product) {
       return null;
@@ -35,6 +45,7 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
           onLoadEnd={() => setIsImageLoading(false)}
         />
         {isImageLoading && <ActivityIndicator size={'large'} />}
+        <Button onPress={onShare} title="Share" />
         <Text>{product.title}</Text>
         <Text>{product.description}</Text>
         <Text>{product.originalPrice}</Text>
