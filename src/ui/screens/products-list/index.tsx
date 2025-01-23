@@ -1,17 +1,26 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, RefreshControl} from 'react-native';
 import styles from './styles';
-import {product} from '../../components/product/mockProduct';
 import {Product} from '../../components/product';
+import {Loader} from '../../components/loader';
+import {useProductsList} from '../../../hooks/product-list';
 
 export function ProductsListScreen(): React.JSX.Element {
+  const {isPending, error, data, isRefetching, refetch} = useProductsList();
+
   return (
-    <FlatList
-      style={styles.flatList}
-      columnWrapperStyle={styles.columnWrapper}
-      numColumns={2}
-      data={[product, product, product, product, product, product]}
-      renderItem={_item => <Product />}
-    />
+    <>
+      {isPending && <Loader />}
+      <FlatList
+        style={styles.flatList}
+        refreshControl={
+          <RefreshControl refreshing={isRefetching} onRefresh={refetch} />
+        }
+        columnWrapperStyle={styles.columnWrapper}
+        numColumns={2}
+        data={data?.products}
+        renderItem={({item}) => <Product {...item} />}
+      />
+    </>
   );
 }
