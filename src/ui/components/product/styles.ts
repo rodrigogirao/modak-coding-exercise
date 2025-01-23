@@ -1,4 +1,10 @@
 import {Dimensions, StyleSheet} from 'react-native';
+import {
+  BorderRadius,
+  FontWeight,
+  OpacityLevel,
+  Spacing,
+} from '../../../constants/tokens';
 
 export const CONTAINER_WIDTH = Dimensions.get('screen').width / 2 - 24;
 
@@ -6,7 +12,7 @@ export default StyleSheet.create({
   container: {
     justifyContent: 'flex-end',
     alignItems: 'center',
-    borderRadius: 32,
+    borderRadius: BorderRadius.L,
     backgroundColor: 'lightgrey',
     width: CONTAINER_WIDTH,
     height: CONTAINER_WIDTH * 1.5,
@@ -14,38 +20,38 @@ export default StyleSheet.create({
   rating: {
     backgroundColor: 'white',
     position: 'absolute',
-    fontWeight: 'bold',
-    opacity: 0.8,
-    borderRadius: 8,
-    padding: 4,
-    top: 20,
-    left: 20,
+    fontWeight: FontWeight.bold,
+    opacity: OpacityLevel.contrast,
+    borderRadius: BorderRadius.S,
+    padding: Spacing.XXS,
+    top: Spacing.XXL,
+    left: Spacing.XXL,
   },
   image: {
     position: 'absolute',
     backgroundColor: 'lightgrey',
-    borderTopStartRadius: 32,
-    borderTopEndRadius: 32,
-    top: 0,
+    borderTopStartRadius: BorderRadius.L,
+    borderTopEndRadius: BorderRadius.L,
+    top: Spacing.zero,
   },
   info: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingHorizontal: Spacing.XL,
+    paddingVertical: Spacing.S,
     width: '100%',
     alignItems: 'center',
     backgroundColor: 'white',
-    opacity: 0.8,
-    gap: 4,
-    borderBottomStartRadius: 32,
-    borderBottomEndRadius: 32,
+    opacity: OpacityLevel.contrast,
+    gap: Spacing.XXS,
+    borderBottomStartRadius: BorderRadius.L,
+    borderBottomEndRadius: BorderRadius.L,
   },
   priceGroup: {
     flexDirection: 'row',
-    gap: 8,
+    gap: Spacing.S,
     alignItems: 'center',
   },
   price: {
-    fontWeight: 'bold',
+    fontWeight: FontWeight.bold,
   },
   originalPrice: {
     textDecorationLine: 'line-through',

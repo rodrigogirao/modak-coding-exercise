@@ -1,4 +1,4 @@
-import {reviewMapper} from '../reviews';
+import {reviewMapper} from '../review';
 import {ProductParamsType, ProductType} from './types';
 
 export function productMapper(params?: ProductParamsType): ProductType | null {

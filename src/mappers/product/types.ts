@@ -1,4 +1,4 @@
-import {ReviewParamsType, ReviewType} from '../reviews/types';
+import {ReviewParamsType, ReviewType} from '../review/types';
 
 export type ProductParamsType = {
   id?: number;

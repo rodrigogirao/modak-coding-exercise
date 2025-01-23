@@ -14,6 +14,7 @@ import {useProductsList} from '../../../hooks/product-list';
 import {useNavigation} from '@react-navigation/native';
 import {CategoryType} from '../../../mappers/category/types';
 import {sortOptions} from '../../../constants/sort-options';
+import {GenericError} from '../../components/generic-error';
 
 export function ProductsListScreen(): React.JSX.Element {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(
@@ -46,6 +47,7 @@ export function ProductsListScreen(): React.JSX.Element {
 
           return (
             <TouchableOpacity
+              key={sortOption.value}
               style={styles.sortOption}
               onPress={() => {
                 setSelectedSortOption(sortOption);
@@ -97,16 +99,21 @@ export function ProductsListScreen(): React.JSX.Element {
                 {selectedSortOption.label}
               </Text>
             </Text>
-            <Button title="Clear" onPress={() => setSelectedSortOption(null)} />
+            <Button
+              title="Clear"
+              onPress={() => {
+                setSelectedSortOption(null);
+                setIsSortingVisible(!isSortingVisible);
+              }}
+            />
           </View>
         )}
       </>
     );
   }
 
-  return (
-    <>
-      {isPending && <Loader />}
+  function renderList() {
+    return (
       <FlatList
         ListHeaderComponent={renderHeader}
         stickyHeaderIndices={[0]}
@@ -119,6 +126,13 @@ export function ProductsListScreen(): React.JSX.Element {
         data={data?.products}
         renderItem={({item}) => <Product {...item} />}
       />
+    );
+  }
+
+  return (
+    <>
+      {isPending && <Loader />}
+      {error ? <GenericError onRetry={refetch} /> : renderList()}
     </>
   );
 }

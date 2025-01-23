@@ -8,15 +8,17 @@ export function reviewMapper(params?: ReviewParamsType): ReviewType | null {
   const {
     rating = 0,
     comment = '',
-    date = '',
+    date,
     reviewerName = '',
     reviewerEmail = '',
   } = params;
 
+  const mappedDate = date ? new Date(date) : null;
+
   return {
     rating,
     comment,
-    date: new Date(date),
+    date: mappedDate,
     reviewerName,
     reviewerEmail,
   };

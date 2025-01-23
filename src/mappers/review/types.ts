@@ -9,7 +9,7 @@ export type ReviewParamsType = {
 export type ReviewType = {
   rating: number;
   comment: string;
-  date: Date;
+  date: Date | null;
   reviewerName: string;
   reviewerEmail: string;
 };
