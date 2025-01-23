@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {FontSize, Spacing} from '../../../constants/tokens';
 
 export default StyleSheet.create({
   error: {
@@ -6,10 +7,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
-    gap: 16,
+    gap: Spacing.XL,
   },
   message: {
-    fontSize: 18,
+    fontSize: FontSize.M,
     textAlign: 'center',
   },
 });

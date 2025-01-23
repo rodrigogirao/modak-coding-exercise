@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {FontSize, FontWeight, Spacing} from '../../../constants/tokens';
 
 export default StyleSheet.create({
   flatList: {
@@ -6,42 +7,42 @@ export default StyleSheet.create({
     height: '100%',
   },
   columnWrapper: {
-    gap: 12,
-    marginVertical: 12,
-    paddingHorizontal: 16,
+    gap: Spacing.L,
+    marginVertical: Spacing.L,
+    paddingHorizontal: Spacing.XL,
   },
   filters: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: 'lightgrey',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingHorizontal: Spacing.L,
+    paddingVertical: Spacing.S,
   },
   selectedFilter: {
     backgroundColor: 'white',
-    paddingHorizontal: 16,
+    paddingHorizontal: Spacing.XL,
     flexDirection: 'row',
     alignItems: 'center',
   },
   categoryName: {
-    fontWeight: 'bold',
+    fontWeight: FontWeight.bold,
   },
   sortOptions: {
     position: 'absolute',
     backgroundColor: 'white',
-    padding: 8,
-    right: 8,
-    gap: 4,
-    top: 48,
-    borderRadius: 8,
+    padding: Spacing.S,
+    right: Spacing.S,
+    top: Spacing.XXXXL,
+    gap: Spacing.XXS,
+    borderRadius: Spacing.S,
     zIndex: 2,
   },
   sortOption: {
-    padding: 8,
+    padding: Spacing.S,
   },
   sortOptionLabel: {
-    fontSize: 16,
+    fontSize: FontSize.S,
   },
   sortOptionSelected: {
     color: 'green',
