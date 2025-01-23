@@ -21,11 +21,29 @@ export default StyleSheet.create({
   selectedFilter: {
     backgroundColor: 'white',
     paddingHorizontal: 16,
-    paddingVertical: 8,
     flexDirection: 'row',
     alignItems: 'center',
   },
   categoryName: {
     fontWeight: 'bold',
+  },
+  sortOptions: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    padding: 8,
+    right: 8,
+    gap: 4,
+    top: 48,
+    borderRadius: 8,
+    zIndex: 2,
+  },
+  sortOption: {
+    padding: 8,
+  },
+  sortOptionLabel: {
+    fontSize: 16,
+  },
+  sortOptionSelected: {
+    color: 'green',
   },
 });

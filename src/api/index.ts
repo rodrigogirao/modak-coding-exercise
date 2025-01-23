@@ -5,11 +5,11 @@ import {productListMapper} from '../mappers/product-list';
 import {ProductListParamsType} from '../mappers/product-list/types';
 import {ProductParamsType} from '../mappers/product/types';
 
-async function getProductsList(categorySlug: string) {
+async function getProductsList(categorySlug: string, sortOption: string) {
   const categoryUrl = categorySlug ? `/category/${categorySlug}` : '';
 
   const response = await fetch(
-    `https://dummyjson.com/products${categoryUrl}?select=title,price,discountPercentage,rating,thumbnail`,
+    `https://dummyjson.com/products${categoryUrl}?select=title,price,discountPercentage,rating,thumbnail&${sortOption}`,
   );
 
   fetch('https://dummyjson.com/products')
