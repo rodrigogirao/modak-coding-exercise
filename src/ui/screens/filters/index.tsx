@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {Button, FlatList, Text, TouchableOpacity} from 'react-native';
 import {Loader} from '../../components/loader';
+import {GenericError} from '../../components/generic-error';
 import {useNavigation} from '@react-navigation/native';
 import {useFilters} from '../../../hooks/filters';
 import {CategoryType} from '../../../mappers/category/types';
@@ -9,7 +10,7 @@ import {FiltersProps} from './types';
 
 export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
   const {selectedCategory, onSelectFilter} = route.params;
-  const {isPending, error, data} = useFilters();
+  const {isPending, error, data, refetch} = useFilters();
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -44,11 +45,15 @@ export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
   return (
     <>
       {isPending && <Loader />}
-      <FlatList
-        style={styles.flatList}
-        data={data}
-        renderItem={({item}) => renderCategory(item)}
-      />
+      {error ? (
+        <GenericError onRetry={refetch} />
+      ) : (
+        <FlatList
+          style={styles.flatList}
+          data={data}
+          renderItem={({item}) => renderCategory(item)}
+        />
+      )}
     </>
   );
 }

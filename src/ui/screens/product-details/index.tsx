@@ -10,13 +10,14 @@ import styles from './styles';
 import {useProductDetails} from '../../../hooks/product-details';
 import {Loader} from '../../components/loader';
 import {ProductDetailProps} from './types';
+import {GenericError} from '../../components/generic-error';
 
 export const IMAGE_SIZE = Dimensions.get('screen').width;
 
 export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
   const {id} = route.params;
 
-  const {isPending, error, data: product} = useProductDetails(id);
+  const {isPending, error, data: product, refetch} = useProductDetails(id);
   const [isImageLoading, setIsImageLoading] = useState(false);
 
   function renderProductDetail() {
@@ -52,7 +53,7 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
   return (
     <>
       {isPending && <Loader />}
-      {renderProductDetail()}
+      {error ? <GenericError onRetry={refetch} /> : renderProductDetail()}
     </>
   );
 }
