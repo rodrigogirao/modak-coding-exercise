@@ -18,7 +18,16 @@ async function createEvent(name: string, description: string) {
       return;
     }
 
-    CalendarModule.createCalendarEvent(name, description);
+    CalendarModule.createCalendarEvent(
+      name,
+      description,
+      () => {
+        Alert.alert(`Reminder: ${name} created`);
+      },
+      () => {
+        Alert.alert('Error adding reminder to calendar');
+      },
+    );
   } catch (error) {
     Alert.alert(`Error adding reminder to calendar: ${error}`);
   }

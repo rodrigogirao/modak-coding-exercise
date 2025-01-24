@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
+import com.facebook.react.bridge.Callback
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
@@ -32,7 +33,10 @@ class CalendarModule(private val reactContext: ReactApplicationContext) : ReactC
         }
     }
 
-    private fun create(name: String, description: String){
+    private fun create(name: String,
+                       description: String,
+                       successCallback: Callback,
+                       failureCallback: Callback){
         val datePicker = calendarDialog?.dialog?.findViewById<DatePicker>(R.id.date_picker)
         val timePicker = calendarDialog?.dialog?.findViewById<TimePicker>(R.id.time_picker)
         datePicker?.let {
@@ -60,20 +64,23 @@ class CalendarModule(private val reactContext: ReactApplicationContext) : ReactC
                 }
                 val uri: Uri? =
                     reactContext.contentResolver.insert(CalendarContract.Events.CONTENT_URI, values)
-                Log.d(tag, "EventCreated: $uri")
+                uri?.let { successCallback.invoke(uri.toString()) } ?: { failureCallback.invoke() }
             }
         }
 
     }
 
     @ReactMethod
-    fun createCalendarEvent(name: String, description: String) {
+    fun createCalendarEvent(name: String,
+                            description: String,
+                            successCallback: Callback,
+                            failureCallback: Callback) {
         runOnUiThread {
             appCompatActivity.layoutInflater.inflate(R.layout.calendar, null)
 
             val dialogFragment = CalendarDialogFragment.newInstance(
                 { _, _ -> hideDialog() },
-                { _, _ -> create(name, description) })
+                { _, _ -> create(name, description, successCallback, failureCallback) })
 
             calendarDialog = dialogFragment
             dialogFragment.showNow(appCompatActivity.supportFragmentManager, tag)
