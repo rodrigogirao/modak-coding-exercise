@@ -13,7 +13,15 @@ export const RootStack = createNativeStackNavigator({
   initialRouteName: 'ProductsList',
   screens: {
     ProductsList: ProductsListScreen,
-    ProductDetails: ProductDetails,
+    ProductDetails: {
+      screen: ProductDetails,
+      linking: {
+        path: 'products/:id',
+      },
+      options: {
+        headerBackButtonDisplayMode: 'minimal',
+      },
+    },
     Filters: {
       screen: FiltersScreen,
       options: {
@@ -34,10 +42,14 @@ const queryClient = new QueryClient({
   },
 });
 
+const linking = {
+  prefixes: ['modak-coding-exercise://'],
+};
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Navigation />
+      <Navigation linking={linking} />
     </QueryClientProvider>
   );
 }
