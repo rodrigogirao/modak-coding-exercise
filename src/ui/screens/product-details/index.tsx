@@ -4,7 +4,7 @@ import {
   Button,
   Dimensions,
   Image,
-  NativeModules,
+  Platform,
   ScrollView,
   Share,
   Text,
@@ -17,7 +17,8 @@ import {ProductDetailProps} from './types';
 import {GenericError} from '../../components/generic-error';
 import {Calendar} from '../../../modules/calendar';
 
-export const IMAGE_SIZE = Dimensions.get('screen').width;
+const IMAGE_SIZE = Dimensions.get('screen').width;
+const isAndroid = Platform.OS === 'android';
 
 export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
   const {id} = route.params;
@@ -75,7 +76,7 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
         />
         {isImageLoading && <ActivityIndicator size={'large'} />}
         <Button onPress={onShare} title="Share" />
-        <Button onPress={onCreateReminder} title="Remind me" />
+        {isAndroid && <Button onPress={onCreateReminder} title="Remind me" />}
         <Text>{product.title}</Text>
         <Text>{product.description}</Text>
         <Text>{product.originalPrice}</Text>
