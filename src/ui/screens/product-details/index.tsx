@@ -4,6 +4,7 @@ import {
   Button,
   Dimensions,
   Image,
+  NativeModules,
   ScrollView,
   Share,
   Text,
@@ -14,6 +15,7 @@ import {useProductDetails} from '../../../hooks/product-details';
 import {Loader} from '../../components/loader';
 import {ProductDetailProps} from './types';
 import {GenericError} from '../../components/generic-error';
+import {Calendar} from '../../../modules/calendar';
 
 export const IMAGE_SIZE = Dimensions.get('screen').width;
 
@@ -48,6 +50,15 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
     }
   }
 
+  function onCreateReminder() {
+    if (product) {
+      Calendar.createEvent(
+        product.title,
+        `modak-coding-exercise://product/${product.id}`,
+      );
+    }
+  }
+
   function renderProductDetail() {
     if (!product) {
       return null;
@@ -64,6 +75,7 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
         />
         {isImageLoading && <ActivityIndicator size={'large'} />}
         <Button onPress={onShare} title="Share" />
+        <Button onPress={onCreateReminder} title="Remind me" />
         <Text>{product.title}</Text>
         <Text>{product.description}</Text>
         <Text>{product.originalPrice}</Text>

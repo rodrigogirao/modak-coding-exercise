@@ -12,9 +12,6 @@ async function getProductsList(categorySlug: string, sortOption: string) {
     `https://dummyjson.com/products${categoryUrl}?select=title,price,discountPercentage,rating,thumbnail&${sortOption}`,
   );
 
-  fetch('https://dummyjson.com/products')
-    .then(res => res.json())
-    .then(console.log);
   const productsListParams: ProductListParamsType = await response.json();
 
   return productListMapper(productsListParams);
