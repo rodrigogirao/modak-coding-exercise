@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   Button,
@@ -8,6 +8,7 @@ import {
   Share,
   Text,
 } from 'react-native';
+import {StackActions, useNavigation} from '@react-navigation/native';
 import styles from './styles';
 import {useProductDetails} from '../../../hooks/product-details';
 import {Loader} from '../../components/loader';
@@ -21,6 +22,23 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
 
   const {isPending, error, data: product, refetch} = useProductDetails(id);
   const [isImageLoading, setIsImageLoading] = useState(false);
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    if (!navigation.canGoBack()) {
+      navigation.setOptions({
+        // eslint-disable-next-line react/no-unstable-nested-components
+        headerLeft: () => (
+          <Button
+            title="Close"
+            onPress={() => {
+              navigation.dispatch(StackActions.replace('ProductsList'));
+            }}
+          />
+        ),
+      });
+    }
+  }, [navigation]);
 
   function onShare() {
     if (product) {
