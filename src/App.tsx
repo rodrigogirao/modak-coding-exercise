@@ -11,8 +11,6 @@ const ONE_MINUTE_STALE_TIME = 60000;
 
 export const RootStack = createNativeStackNavigator({
   initialRouteName: 'ProductsList',
-  screenOptions: {},
-
   screens: {
     ProductsList: ProductsListScreen,
     ProductDetails: {
