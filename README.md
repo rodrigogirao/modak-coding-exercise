@@ -62,36 +62,53 @@ If everything is set up correctly, you should see your new app running in the An
 
 This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
-## Step 3: Modify your app
+# Review instructions
 
-Now that you have successfully run the app, let's make changes!
+## Folder structure
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+#### Typescript React Native code is in the folder `src`
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+#### The folder structure below is to show wich Android native files were created or changed to implement Calendar integration
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+```sh
+├── android
+│   ├── app
+│   │   └── src
+│   │       └── main
+│   │           ├── AndroidManifest.xml
+│   │           ├── java
+│   │           │   └── com
+│   │           │       └── modakcodingexercise
+│   │           │           ├── CalendarDialogFragment.kt
+│   │           │           ├── CalendarModule.kt
+│   │           │           ├── MainActivity.kt
+│   │           │           ├── MainApplication.kt
+│   │           │           └── ModakCodingExercisePackage.kt
+│   │           └── res
+│   │               ├── layout
+│   │               │   └── calendar.xml
+```
 
-## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
+## Screenshots
 
-### Now what?
+### Products List
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+Android | iOS
+---- | ----
+![Screenshot_20250125_030152_ModakCodingExercise](https://github.com/user-attachments/assets/84c4e668-94c5-43ce-af32-30937cc9552e) | ![Simulator Screenshot - iPhone 16 Pro - 2025-01-25 at 02 46 39](https://github.com/user-attachments/assets/39207c0d-7a53-465f-8f2a-721019fbf1a0)
+![Screenshot_20250125_030207_ModakCodingExercise](https://github.com/user-attachments/assets/c7a347b2-ed84-4401-8a72-00a8ee60cf66) | ![Simulator Screenshot - iPhone 16 Pro - 2025-01-25 at 02 46 53](https://github.com/user-attachments/assets/c62366d1-5dba-4bba-af50-3b7e364aac88) 
+![Screenshot_20250125_030227_ModakCodingExercise](https://github.com/user-attachments/assets/8cf6d406-f0b1-4858-9070-628613fd635e) | ![Simulator Screenshot - iPhone 16 Pro - 2025-01-25 at 02 50 07](https://github.com/user-attachments/assets/f546b0f8-dc4e-4553-b448-b77382ef49c7)
 
-# Troubleshooting
+### Product Details
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Android | iOS
+---- | ----
+![Screenshot_20250125_030911_ModakCodingExercise](https://github.com/user-attachments/assets/c81f2de1-60c0-4359-99dc-0560a8411405) | ![Simulator Screenshot - iPhone 16 Pro - 2025-01-25 at 03 10 12](https://github.com/user-attachments/assets/4f0f0897-7a5f-4ad3-aa27-0afe60e3deae)
+![Screenshot_20250125_030925_ModakCodingExercise](https://github.com/user-attachments/assets/ec3a2641-ac1c-414c-9f30-e8567f13d1ab) | ![Simulator Screenshot - iPhone 16 Pro - 2025-01-25 at 03 10 19](https://github.com/user-attachments/assets/de073d7c-1a94-470c-b56f-18ee5611a428)
+![Screenshot_20250125_030944_ModakCodingExercise](https://github.com/user-attachments/assets/eb9a05c3-d927-423d-9e50-a8a52c4165e4) | ![Simulator Screenshot - iPhone 16 Pro - 2025-01-25 at 03 09 59](https://github.com/user-attachments/assets/e6b17773-7b7f-475c-a5d0-63e8983b5afc)
 
-# Learn More
 
-To learn more about React Native, take a look at the following resources:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
