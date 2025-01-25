@@ -1,5 +1,3 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
-
 # Getting Started
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
@@ -81,7 +79,6 @@ This is one way to run your app — you can also build it directly from Android 
 │   │           │       └── modakcodingexercise
 │   │           │           ├── CalendarDialogFragment.kt
 │   │           │           ├── CalendarModule.kt
-│   │           │           ├── MainActivity.kt
 │   │           │           ├── MainApplication.kt
 │   │           │           └── ModakCodingExercisePackage.kt
 │   │           └── res
@@ -108,7 +105,27 @@ Android | iOS
 ![Screenshot_20250125_030925_ModakCodingExercise](https://github.com/user-attachments/assets/ec3a2641-ac1c-414c-9f30-e8567f13d1ab) | ![Simulator Screenshot - iPhone 16 Pro - 2025-01-25 at 03 10 19](https://github.com/user-attachments/assets/de073d7c-1a94-470c-b56f-18ee5611a428)
 ![Screenshot_20250125_030944_ModakCodingExercise](https://github.com/user-attachments/assets/eb9a05c3-d927-423d-9e50-a8a52c4165e4) | ![Simulator Screenshot - iPhone 16 Pro - 2025-01-25 at 03 09 59](https://github.com/user-attachments/assets/e6b17773-7b7f-475c-a5d0-63e8983b5afc)
 
+## Videos
 
+### Filtering and sorting
+
+https://github.com/user-attachments/assets/0fbccb2c-93f2-45ed-9402-2c540e4bf8ff
+
+https://github.com/user-attachments/assets/49ad46f2-1d34-481a-af8d-c38d245c51d9
+
+### Deeplinking
+
+https://github.com/user-attachments/assets/4eae1549-89db-49a8-af39-7c552d0333d2
+
+https://github.com/user-attachments/assets/aa277054-ef29-4e9d-a604-1b0f0dbc21ae
+
+### Creating Calendar event
+
+https://github.com/user-attachments/assets/5e1e418c-0815-4eaf-844c-8e337ca3ad2a
+
+### Sharing
+
+https://github.com/user-attachments/assets/d4842457-4466-4518-ad58-7bc275b7310a
 
 
 
