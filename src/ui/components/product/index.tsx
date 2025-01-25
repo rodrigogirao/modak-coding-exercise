@@ -3,6 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles, {CONTAINER_WIDTH} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {ProductType} from '../../../mappers/product/types';
+import {OpacityLevel} from '../../../constants/tokens';
 
 export function Product(product: ProductType): React.JSX.Element {
   const navigation = useNavigation();
@@ -18,7 +19,7 @@ export function Product(product: ProductType): React.JSX.Element {
   }
 
   function renderPrice() {
-    const discountedStyle = hasDiscount ? {color: 'red'} : null;
+    const discountedStyle = hasDiscount ? styles.discountedStyle : null;
 
     return (
       <Text style={[styles.price, discountedStyle]}>$ {product.price}</Text>
@@ -27,7 +28,7 @@ export function Product(product: ProductType): React.JSX.Element {
 
   return (
     <TouchableOpacity
-      activeOpacity={0.6}
+      activeOpacity={OpacityLevel.overlay}
       style={styles.container}
       onPress={() =>
         navigation.navigate('ProductDetails', {

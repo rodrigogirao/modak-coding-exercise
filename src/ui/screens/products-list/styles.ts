@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native';
-import {FontSize, FontWeight, Spacing} from '../../../constants/tokens';
+import {Colors, FontSize, FontWeight, Spacing} from '../../../constants/tokens';
 
 export default StyleSheet.create({
   flatList: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.background,
     height: '100%',
   },
   columnWrapper: {
@@ -15,7 +15,7 @@ export default StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'lightgrey',
+    backgroundColor: Colors.secondary,
     paddingHorizontal: Spacing.L,
     paddingVertical: Spacing.S,
   },
@@ -45,6 +45,6 @@ export default StyleSheet.create({
     fontSize: FontSize.S,
   },
   sortOptionSelected: {
-    color: 'green',
+    color: Colors.primary,
   },
 });

@@ -1,3 +1,11 @@
+export enum Colors {
+  primary = '#006a61',
+  secondary = '#CCE8E3',
+  background = '#FAFDFB',
+  backgroundAlternate = 'lightgrey',
+  error = '#BA1A1A',
+}
+
 export enum OpacityLevel {
   zero = 0,
   light = 0.2,
@@ -20,6 +28,7 @@ export enum FontSize {
 export enum FontWeight {
   light = 'light',
   regular = 'regular',
+  semibold = '600',
   bold = 'bold',
 }
 

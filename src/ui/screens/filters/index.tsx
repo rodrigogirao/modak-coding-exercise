@@ -7,6 +7,7 @@ import {useFilters} from '../../../hooks/filters';
 import {CategoryType} from '../../../mappers/category/types';
 import styles from './styles';
 import {FiltersProps} from './types';
+import {Colors, OpacityLevel} from '../../../constants/tokens';
 
 export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
   const {selectedCategory, onSelectFilter} = route.params;
@@ -17,7 +18,11 @@ export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
     navigation.setOptions({
       // eslint-disable-next-line react/no-unstable-nested-components
       headerLeft: () => (
-        <Button title="Close" onPress={() => navigation.goBack()} />
+        <Button
+          color={Colors.primary}
+          title="Close"
+          onPress={() => navigation.goBack()}
+        />
       ),
     });
   }, [navigation]);
@@ -34,7 +39,7 @@ export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
 
     return (
       <TouchableOpacity
-        activeOpacity={0.6}
+        activeOpacity={OpacityLevel.overlay}
         style={[styles.category, selectedStyle]}
         onPress={() => onPressFilter(category)}>
         <Text>{category.name}</Text>
@@ -50,6 +55,7 @@ export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
       ) : (
         <FlatList
           style={styles.flatList}
+          contentContainerStyle={styles.flatListContainer}
           data={data}
           renderItem={({item}) => renderCategory(item)}
         />

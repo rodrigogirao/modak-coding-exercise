@@ -1,6 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {
   BorderRadius,
+  Colors,
   FontWeight,
   OpacityLevel,
   Spacing,
@@ -13,12 +14,12 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     borderRadius: BorderRadius.L,
-    backgroundColor: 'lightgrey',
+    backgroundColor: Colors.backgroundAlternate,
     width: CONTAINER_WIDTH,
     height: CONTAINER_WIDTH * 1.5,
   },
   rating: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.background,
     position: 'absolute',
     fontWeight: FontWeight.bold,
     opacity: OpacityLevel.contrast,
@@ -29,9 +30,8 @@ export default StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    backgroundColor: 'lightgrey',
-    borderTopStartRadius: BorderRadius.L,
-    borderTopEndRadius: BorderRadius.L,
+    borderTopRightRadius: BorderRadius.L,
+    borderTopLeftRadius: BorderRadius.L,
     top: Spacing.zero,
   },
   info: {
@@ -39,11 +39,11 @@ export default StyleSheet.create({
     paddingVertical: Spacing.S,
     width: '100%',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: Colors.background,
     opacity: OpacityLevel.contrast,
     gap: Spacing.XXS,
-    borderBottomStartRadius: BorderRadius.L,
-    borderBottomEndRadius: BorderRadius.L,
+    borderBottomLeftRadius: BorderRadius.L,
+    borderBottomRightRadius: BorderRadius.L,
   },
   priceGroup: {
     flexDirection: 'row',
@@ -55,5 +55,8 @@ export default StyleSheet.create({
   },
   originalPrice: {
     textDecorationLine: 'line-through',
+  },
+  discountedStyle: {
+    color: Colors.error,
   },
 });

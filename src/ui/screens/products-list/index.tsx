@@ -15,6 +15,7 @@ import {useNavigation} from '@react-navigation/native';
 import {CategoryType} from '../../../mappers/category/types';
 import {sortOptions} from '../../../constants/sort-options';
 import {GenericError} from '../../components/generic-error';
+import {Colors} from '../../../constants/tokens';
 
 export function ProductsListScreen(): React.JSX.Element {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(
@@ -69,6 +70,7 @@ export function ProductsListScreen(): React.JSX.Element {
         <View style={styles.filters}>
           <Button
             title="Filter"
+            color={Colors.primary}
             onPress={() =>
               navigation.navigate('Filters', {
                 selectedCategory,
@@ -77,6 +79,7 @@ export function ProductsListScreen(): React.JSX.Element {
             }
           />
           <Button
+            color={Colors.primary}
             title="Sort"
             onPress={() => setIsSortingVisible(!isSortingVisible)}
           />
