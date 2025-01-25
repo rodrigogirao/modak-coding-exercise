@@ -17,7 +17,7 @@ export const RootStack = createNativeStackNavigator({
     ProductDetails: {
       screen: ProductDetails,
       linking: {
-        path: 'products/:id',
+        path: 'product/:id',
       },
       options: {
         headerBackButtonDisplayMode: 'minimal',

@@ -110,7 +110,7 @@ export function ProductsListScreen(): React.JSX.Element {
               title="Clear"
               onPress={() => {
                 setSelectedSortOption(null)
-                setIsSortingVisible(!isSortingVisible)
+                setIsSortingVisible(false)
               }}
             />
           </View>
