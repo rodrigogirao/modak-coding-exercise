@@ -61,6 +61,7 @@ If everything is set up correctly, you should see your new app running in the An
 This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
 # Review instructions
+[Android Apk](https://github.com/rodrigogirao/modak-coding-exercise/releases/download/1.0.0/modal-coding-exercise.1.0.0.apk)
 
 ## Folder structure
 
