@@ -1,22 +1,24 @@
-import {StyleSheet} from 'react-native';
-import {Spacing} from '../../../constants/tokens';
+import { StyleSheet } from 'react-native'
+
+import { Colors, Spacing } from 'constants/tokens'
 
 export default StyleSheet.create({
   flatList: {
-    backgroundColor: 'white',
-    height: '100%',
+    backgroundColor: Colors.background,
     paddingTop: Spacing.S,
-    paddingBottom: Spacing.XL,
+  },
+  flatListContainer: {
+    paddingBottom: Spacing.XXXL,
   },
   category: {
-    backgroundColor: 'lightgrey',
-    padding: Spacing.XL,
+    backgroundColor: Colors.secondary,
+    padding: Spacing.L,
     marginHorizontal: Spacing.XL,
-    marginVertical: Spacing.S,
+    marginVertical: Spacing.XXS,
     borderRadius: Spacing.S,
   },
   selectedCategory: {
     borderWidth: 2,
-    borderColor: 'green',
+    borderColor: Colors.primary,
   },
-});
+})

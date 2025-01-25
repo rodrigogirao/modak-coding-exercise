@@ -1,6 +1,6 @@
-import {Alert, NativeModules, PermissionsAndroid} from 'react-native';
+import { Alert, NativeModules, PermissionsAndroid } from 'react-native'
 
-const {CalendarModule} = NativeModules;
+const { CalendarModule } = NativeModules
 
 async function createEvent(name: string, description: string) {
   try {
@@ -12,27 +12,28 @@ async function createEvent(name: string, description: string) {
         buttonNegative: 'Cancel',
         buttonPositive: 'OK',
       },
-    );
+    )
+
     if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
-      Alert.alert('Permission denied');
-      return;
+      Alert.alert('Permission denied')
+      return
     }
 
     CalendarModule.createCalendarEvent(
       name,
       description,
       () => {
-        Alert.alert(`Reminder: ${name} created`);
+        Alert.alert(`Reminder: ${name} created`)
       },
       () => {
-        Alert.alert('Error adding reminder to calendar');
+        Alert.alert('Error adding reminder to calendar')
       },
-    );
+    )
   } catch (error) {
-    Alert.alert(`Error adding reminder to calendar: ${error}`);
+    Alert.alert(`Error adding reminder to calendar: ${error}`)
   }
 }
 
 export const Calendar = {
   createEvent,
-};
+}

@@ -1,11 +1,11 @@
-import {ProductParamsType, ProductType} from '../product/types';
+import { ProductParamsType, ProductType } from '../product/types'
 
 export type ProductListParamsType = {
-  products?: ProductParamsType[];
-  total?: number;
-};
+  products?: ProductParamsType[]
+  total?: number
+}
 
 export type ProductListType = {
-  products: ProductType[];
-  total: number;
-};
+  products: ProductType[]
+  total: number
+}

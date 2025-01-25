@@ -1,3 +1,17 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "plugins": ["prettier"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"],
+      "api": ["src/api/index"],
+      "components": ["src/ui/components/index"],
+      "constants": ["src/constants/index"],
+      "hooks": ["src/hooks/index"],
+      "mappers": ["src/mappers/index"],
+      "modules": ["src/modules/index"],
+      "screens": ["src/ui/screens/index"]
+    }
+  }
 }
