@@ -1,18 +1,18 @@
-import React, {useEffect} from 'react';
-import {Button, FlatList, Text, TouchableOpacity} from 'react-native';
-import {Loader} from '../../components/loader';
-import {GenericError} from '../../components/generic-error';
-import {useNavigation} from '@react-navigation/native';
-import {useFilters} from '../../../hooks/filters';
-import {CategoryType} from '../../../mappers/category/types';
-import styles from './styles';
-import {FiltersProps} from './types';
-import {Colors, OpacityLevel} from '../../../constants/tokens';
+import React, { useEffect } from 'react'
+import { Button, FlatList, Text, TouchableOpacity } from 'react-native'
 
-export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
-  const {selectedCategory, onSelectFilter} = route.params;
-  const {isPending, error, data, refetch} = useFilters();
-  const navigation = useNavigation();
+import { useNavigation } from '@react-navigation/native'
+import { Colors, OpacityLevel } from 'constants/tokens'
+import { useFilters } from 'hooks'
+import { CategoryType } from 'mappers'
+import { GenericError, Loader } from 'ui/components'
+import styles from './styles'
+import { FiltersProps } from './types'
+
+export function FiltersScreen({ route }: FiltersProps): React.JSX.Element {
+  const { selectedCategory, onSelectFilter } = route.params
+  const { isPending, error, data, refetch } = useFilters()
+  const navigation = useNavigation()
 
   useEffect(() => {
     navigation.setOptions({
@@ -24,18 +24,22 @@ export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
           onPress={() => navigation.goBack()}
         />
       ),
-    });
-  }, [navigation]);
+    })
+  }, [navigation])
 
   function onPressFilter(category: CategoryType) {
-    onSelectFilter(category);
-    navigation.goBack();
+    onSelectFilter(category)
+    navigation.goBack()
   }
 
-  function renderCategory(category: CategoryType) {
-    const isSelected = selectedCategory?.slug === category.slug;
+  function renderCategory(category: CategoryType | null) {
+    if (!category) {
+      return null
+    }
 
-    const selectedStyle = isSelected ? styles.selectedCategory : null;
+    const isSelected = selectedCategory?.slug === category.slug
+
+    const selectedStyle = isSelected ? styles.selectedCategory : null
 
     return (
       <TouchableOpacity
@@ -44,7 +48,7 @@ export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
         onPress={() => onPressFilter(category)}>
         <Text>{category.name}</Text>
       </TouchableOpacity>
-    );
+    )
   }
 
   return (
@@ -57,9 +61,9 @@ export function FiltersScreen({route}: FiltersProps): React.JSX.Element {
           style={styles.flatList}
           contentContainerStyle={styles.flatListContainer}
           data={data}
-          renderItem={({item}) => renderCategory(item)}
+          renderItem={({ item }) => renderCategory(item)}
         />
       )}
     </>
-  );
+  )
 }

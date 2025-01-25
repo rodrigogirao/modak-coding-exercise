@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors, FontSize, Spacing} from '../../../constants/tokens';
+import { StyleSheet } from 'react-native'
+
+import { Colors, FontSize, Spacing } from 'constants/tokens'
 
 export default StyleSheet.create({
   error: {
@@ -13,4 +14,4 @@ export default StyleSheet.create({
     fontSize: FontSize.M,
     textAlign: 'center',
   },
-});
+})

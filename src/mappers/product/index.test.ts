@@ -1,6 +1,6 @@
-import {faker} from '@faker-js/faker';
-import {ProductParamsType, ProductType} from './types';
-import {productMapper} from '.';
+import { faker } from '@faker-js/faker'
+import { productMapper } from '.'
+import { ProductParamsType, ProductType } from './types'
 
 function makeProductParams(): ProductParamsType {
   return {
@@ -17,18 +17,18 @@ function makeProductParams(): ProductParamsType {
     reviews: [],
     images: [faker.image.url()],
     thumbnail: faker.image.url(),
-  };
+  }
 }
 
 describe('productMapper', () => {
   it('should return null if no param is provided', () => {
-    const result = productMapper();
+    const result = productMapper()
 
-    expect(result).toBeNull();
-  });
+    expect(result).toBeNull()
+  })
 
   it('should return the default values when an empty object is provided', () => {
-    const result = productMapper({});
+    const result = productMapper({})
 
     const expectedResult: ProductType = {
       id: 0,
@@ -44,15 +44,15 @@ describe('productMapper', () => {
       reviews: [],
       images: [],
       thumbnail: '',
-    };
+    }
 
-    expect(result).toEqual(expectedResult);
-  });
+    expect(result).toEqual(expectedResult)
+  })
 
   it('should return an object with correct values when all params are provided', () => {
-    const params = makeProductParams();
+    const params = makeProductParams()
 
-    const result = productMapper(params);
+    const result = productMapper(params)
 
     const expectedResult: ProductType = {
       id: params.id!,
@@ -68,8 +68,8 @@ describe('productMapper', () => {
       reviews: [],
       images: params.images!,
       thumbnail: params.thumbnail!,
-    };
+    }
 
-    expect(result).toEqual(expectedResult);
-  });
-});
+    expect(result).toEqual(expectedResult)
+  })
+})

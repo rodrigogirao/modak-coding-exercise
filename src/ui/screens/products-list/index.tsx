@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react'
 import {
   Button,
   FlatList,
@@ -6,62 +6,61 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
-import styles from './styles';
-import {Product} from '../../components/product';
-import {Loader} from '../../components/loader';
-import {useProductsList} from '../../../hooks/product-list';
-import {useNavigation} from '@react-navigation/native';
-import {CategoryType} from '../../../mappers/category/types';
-import {sortOptions} from '../../../constants/sort-options';
-import {GenericError} from '../../components/generic-error';
-import {Colors} from '../../../constants/tokens';
+} from 'react-native'
+
+import { useNavigation } from '@react-navigation/native'
+import { sortOptions } from 'constants/sort-options'
+import { Colors } from 'constants/tokens'
+import { useProductsList } from 'hooks'
+import { CategoryType } from 'mappers'
+import { GenericError, Loader, Product } from 'ui/components'
+import styles from './styles'
 
 export function ProductsListScreen(): React.JSX.Element {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(
     null,
-  );
+  )
   const [selectedSortOption, setSelectedSortOption] = useState<
     (typeof sortOptions)[0] | null
-  >(null);
-  const [isSortingVisible, setIsSortingVisible] = useState(false);
-  const {isPending, error, data, isRefetching, refetch} = useProductsList({
+  >(null)
+  const [isSortingVisible, setIsSortingVisible] = useState(false)
+  const { isPending, error, data, isRefetching, refetch } = useProductsList({
     categorySlug: selectedCategory?.slug || '',
     sortOption: selectedSortOption?.value || '',
-  });
-  const navigation = useNavigation();
+  })
+  const navigation = useNavigation()
 
   function onSelectFilter(category: CategoryType) {
-    setSelectedCategory(category);
+    setSelectedCategory(category)
   }
 
   function renderSortOptions() {
     if (!isSortingVisible) {
-      return null;
+      return null
     }
 
     return (
       <View style={styles.sortOptions}>
         {sortOptions.map(sortOption => {
-          const isSelected = sortOption.value === selectedSortOption?.value;
-          const selectedStyle = isSelected ? styles.sortOptionSelected : null;
+          const isSelected = sortOption.value === selectedSortOption?.value
+          const selectedStyle = isSelected ? styles.sortOptionSelected : null
 
           return (
             <TouchableOpacity
               key={sortOption.value}
               style={styles.sortOption}
               onPress={() => {
-                setSelectedSortOption(sortOption);
-                setIsSortingVisible(false);
+                setSelectedSortOption(sortOption)
+                setIsSortingVisible(false)
               }}>
               <Text style={[styles.sortOptionLabel, selectedStyle]}>
                 {sortOption.label}
               </Text>
             </TouchableOpacity>
-          );
+          )
         })}
       </View>
-    );
+    )
   }
 
   function renderHeader() {
@@ -91,7 +90,11 @@ export function ProductsListScreen(): React.JSX.Element {
               {'Filtering by: '}
               <Text style={styles.categoryName}>{selectedCategory.name}</Text>
             </Text>
-            <Button title="Clear" onPress={() => setSelectedCategory(null)} />
+            <Button
+              color={Colors.primary}
+              title="Clear"
+              onPress={() => setSelectedCategory(null)}
+            />
           </View>
         )}
         {selectedSortOption && (
@@ -103,16 +106,17 @@ export function ProductsListScreen(): React.JSX.Element {
               </Text>
             </Text>
             <Button
+              color={Colors.primary}
               title="Clear"
               onPress={() => {
-                setSelectedSortOption(null);
-                setIsSortingVisible(!isSortingVisible);
+                setSelectedSortOption(null)
+                setIsSortingVisible(!isSortingVisible)
               }}
             />
           </View>
         )}
       </>
-    );
+    )
   }
 
   function renderList() {
@@ -127,9 +131,9 @@ export function ProductsListScreen(): React.JSX.Element {
         columnWrapperStyle={styles.columnWrapper}
         numColumns={2}
         data={data?.products}
-        renderItem={({item}) => <Product {...item} />}
+        renderItem={({ item }) => <Product {...item} />}
       />
-    );
+    )
   }
 
   return (
@@ -137,5 +141,5 @@ export function ProductsListScreen(): React.JSX.Element {
       {isPending && <Loader />}
       {error ? <GenericError onRetry={refetch} /> : renderList()}
     </>
-  );
+  )
 }

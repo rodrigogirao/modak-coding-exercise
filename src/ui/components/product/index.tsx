@@ -1,29 +1,30 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-import styles, {CONTAINER_WIDTH} from './styles';
-import {useNavigation} from '@react-navigation/native';
-import {ProductType} from '../../../mappers/product/types';
-import {OpacityLevel} from '../../../constants/tokens';
+import React from 'react'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
+
+import { useNavigation } from '@react-navigation/native'
+import { OpacityLevel } from 'constants/tokens'
+import { ProductType } from 'mappers'
+import styles, { CONTAINER_WIDTH } from './styles'
 
 export function Product(product: ProductType): React.JSX.Element {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
-  const hasDiscount = product.price !== product.originalPrice;
+  const hasDiscount = product.price !== product.originalPrice
 
   function renderOriginalPrice() {
     if (!hasDiscount) {
-      return null;
+      return null
     }
 
-    return <Text style={styles.originalPrice}>$ {product.originalPrice}</Text>;
+    return <Text style={styles.originalPrice}>$ {product.originalPrice}</Text>
   }
 
   function renderPrice() {
-    const discountedStyle = hasDiscount ? styles.discountedStyle : null;
+    const discountedStyle = hasDiscount ? styles.discountedStyle : null
 
     return (
       <Text style={[styles.price, discountedStyle]}>$ {product.price}</Text>
-    );
+    )
   }
 
   return (
@@ -38,7 +39,7 @@ export function Product(product: ProductType): React.JSX.Element {
       <Image
         resizeMode="cover"
         style={styles.image}
-        source={{uri: product.thumbnail}}
+        source={{ uri: product.thumbnail }}
         width={CONTAINER_WIDTH}
         height={CONTAINER_WIDTH * 1.3}
       />
@@ -51,5 +52,5 @@ export function Product(product: ProductType): React.JSX.Element {
         </View>
       </View>
     </TouchableOpacity>
-  );
+  )
 }

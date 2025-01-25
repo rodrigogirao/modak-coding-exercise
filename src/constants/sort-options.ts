@@ -15,4 +15,4 @@ export const sortOptions = [
     label: 'Rating ↓',
     value: 'sortBy=rating&order=desc',
   },
-];
+]

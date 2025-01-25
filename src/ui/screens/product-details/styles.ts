@@ -1,4 +1,5 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native'
+
 import {
   BorderRadius,
   Colors,
@@ -6,9 +7,9 @@ import {
   FontWeight,
   OpacityLevel,
   Spacing,
-} from '../../../constants/tokens';
+} from 'constants/tokens'
 
-export const IMAGE_SIZE = Dimensions.get('screen').width;
+export const IMAGE_SIZE = Dimensions.get('screen').width
 
 export default StyleSheet.create({
   scrollView: {
@@ -90,4 +91,4 @@ export default StyleSheet.create({
   comment: {
     fontWeight: FontWeight.semibold,
   },
-});
+})

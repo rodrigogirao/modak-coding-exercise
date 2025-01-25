@@ -1,13 +1,14 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native'
+
 import {
   BorderRadius,
   Colors,
   FontWeight,
   OpacityLevel,
   Spacing,
-} from '../../../constants/tokens';
+} from 'constants/tokens'
 
-export const CONTAINER_WIDTH = Dimensions.get('screen').width / 2 - 24;
+export const CONTAINER_WIDTH = Dimensions.get('screen').width / 2 - 24
 
 export default StyleSheet.create({
   container: {
@@ -59,4 +60,4 @@ export default StyleSheet.create({
   discountedStyle: {
     color: Colors.error,
   },
-});
+})

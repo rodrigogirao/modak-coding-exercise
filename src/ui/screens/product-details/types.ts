@@ -1,5 +1,5 @@
-import type {StaticScreenProps} from '@react-navigation/native';
+import type { StaticScreenProps } from '@react-navigation/native'
 
 export type ProductDetailProps = StaticScreenProps<{
-  id: number;
-}>;
+  id: number
+}>

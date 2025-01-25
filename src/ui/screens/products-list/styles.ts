@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors, FontSize, FontWeight, Spacing} from '../../../constants/tokens';
+import { StyleSheet } from 'react-native'
+
+import { Colors, FontSize, FontWeight, Spacing } from 'constants/tokens'
 
 export default StyleSheet.create({
   flatList: {
@@ -47,4 +48,4 @@ export default StyleSheet.create({
   sortOptionSelected: {
     color: Colors.primary,
   },
-});
+})

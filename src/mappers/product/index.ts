@@ -1,9 +1,10 @@
-import {reviewMapper} from '../review';
-import {ProductParamsType, ProductType} from './types';
+import { ReviewType } from 'mappers/review/types'
+import { reviewMapper } from '../review'
+import { ProductParamsType, ProductType } from './types'
 
 export function productMapper(params?: ProductParamsType): ProductType | null {
   if (!params) {
-    return null;
+    return null
   }
 
   const {
@@ -20,13 +21,15 @@ export function productMapper(params?: ProductParamsType): ProductType | null {
     reviews = [],
     images = [],
     thumbnail = '',
-  } = params;
+  } = params
 
   const calculatedPrice = (price - (price * discountPercentage) / 100).toFixed(
     2,
-  );
+  )
 
-  const mappedReviews = reviews.map(reviewMapper).filter(object => !!object);
+  const mappedReviews = reviews
+    .map(reviewMapper)
+    .filter(object => !!object) as ReviewType[]
 
   return {
     id,
@@ -42,5 +45,5 @@ export function productMapper(params?: ProductParamsType): ProductType | null {
     reviews: mappedReviews,
     images,
     thumbnail,
-  };
+  }
 }

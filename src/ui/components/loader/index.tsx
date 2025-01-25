@@ -1,7 +1,8 @@
-import React from 'react';
-import {ActivityIndicator} from 'react-native';
-import styles from './styles';
-import {Colors} from '../../../constants/tokens';
+import React from 'react'
+import { ActivityIndicator } from 'react-native'
+
+import { Colors } from 'constants/tokens'
+import styles from './styles'
 
 export function Loader(): React.JSX.Element {
   return (
@@ -10,5 +11,5 @@ export function Loader(): React.JSX.Element {
       size={'large'}
       style={styles.loader}
     />
-  );
+  )
 }

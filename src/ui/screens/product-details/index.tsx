@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react'
 import {
   Button,
   Image,
@@ -7,26 +7,29 @@ import {
   Share,
   Text,
   View,
-} from 'react-native';
-import {StackActions, useNavigation} from '@react-navigation/native';
-import styles, {IMAGE_SIZE} from './styles';
-import {useProductDetails} from '../../../hooks/product-details';
-import {Loader} from '../../components/loader';
-import {ProductDetailProps} from './types';
-import {GenericError} from '../../components/generic-error';
-import {Calendar} from '../../../modules/calendar';
-import {Colors} from '../../../constants/tokens';
+} from 'react-native'
 
-const isAndroid = Platform.OS === 'android';
+import { StackActions, useNavigation } from '@react-navigation/native'
 
-export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
-  const {id} = route.params;
+import { Colors } from 'constants/tokens'
+import { useProductDetails } from 'hooks'
+import { Calendar } from 'modules'
+import { GenericError, Loader } from 'ui/components'
+import styles, { IMAGE_SIZE } from './styles'
+import { ProductDetailProps } from './types'
 
-  const {isPending, error, data: product, refetch} = useProductDetails(id);
-  const [isImageLoading, setIsImageLoading] = useState(false);
-  const navigation = useNavigation();
+const isAndroid = Platform.OS === 'android'
 
-  const hasDiscount = product?.price !== product?.originalPrice;
+export function ProductDetails({
+  route,
+}: ProductDetailProps): React.JSX.Element {
+  const { id } = route.params
+
+  const { isPending, error, data: product, refetch } = useProductDetails(id)
+  const [isImageLoading, setIsImageLoading] = useState(false)
+  const navigation = useNavigation()
+
+  const hasDiscount = product?.price !== product?.originalPrice
 
   useEffect(() => {
     if (!navigation.canGoBack()) {
@@ -37,19 +40,19 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
             color={Colors.primary}
             title="Close"
             onPress={() => {
-              navigation.dispatch(StackActions.replace('ProductsList'));
+              navigation.dispatch(StackActions.replace('ProductsList'))
             }}
           />
         ),
-      });
+      })
     }
-  }, [navigation]);
+  }, [navigation])
 
   function onShare() {
     if (product) {
       Share.share({
         message: `${product.title} | modak-coding-exercise://product/${product.id}`,
-      });
+      })
     }
   }
 
@@ -58,24 +61,24 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
       Calendar.createEvent(
         product.title,
         `modak-coding-exercise://product/${product.id}`,
-      );
+      )
     }
   }
 
   function renderOriginalPrice() {
     if (!hasDiscount) {
-      return null;
+      return null
     }
 
-    return <Text style={styles.originalPrice}>$ {product?.originalPrice}</Text>;
+    return <Text style={styles.originalPrice}>$ {product?.originalPrice}</Text>
   }
 
   function renderPrice() {
-    const discountedStyle = hasDiscount ? styles.discountStyle : null;
+    const discountedStyle = hasDiscount ? styles.discountStyle : null
 
     return (
       <Text style={[styles.price, discountedStyle]}>$ {product?.price}</Text>
-    );
+    )
   }
 
   function renderHeader() {
@@ -99,7 +102,7 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
           {renderPrice()}
         </View>
       </View>
-    );
+    )
   }
 
   function renderReviews() {
@@ -123,15 +126,15 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
               </Text>
               <Text style={styles.comment}>{review.comment}</Text>
             </View>
-          );
+          )
         })}
       </View>
-    );
+    )
   }
 
   function renderProductDetail() {
     if (!product) {
-      return null;
+      return null
     }
 
     return (
@@ -162,12 +165,12 @@ export function ProductDetails({route}: ProductDetailProps): React.JSX.Element {
         </View>
         {renderReviews()}
       </ScrollView>
-    );
+    )
   }
   return (
     <>
       {isPending && <Loader />}
       {error ? <GenericError onRetry={refetch} /> : renderProductDetail()}
     </>
-  );
+  )
 }

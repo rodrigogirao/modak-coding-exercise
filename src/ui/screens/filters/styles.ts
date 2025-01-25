@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors, Spacing} from '../../../constants/tokens';
+import { StyleSheet } from 'react-native'
+
+import { Colors, Spacing } from 'constants/tokens'
 
 export default StyleSheet.create({
   flatList: {
@@ -20,4 +21,4 @@ export default StyleSheet.create({
     borderWidth: 2,
     borderColor: Colors.primary,
   },
-});
+})
