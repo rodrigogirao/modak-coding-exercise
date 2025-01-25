@@ -59,7 +59,7 @@ export function ProductDetails({
   function onCreateReminder() {
     if (product) {
       Calendar.createEvent(
-        product.title,
+        `Buy: ${product.title}`,
         `modak-coding-exercise://product/${product.id}`,
       )
     }
